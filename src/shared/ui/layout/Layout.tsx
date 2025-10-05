@@ -5,12 +5,14 @@ import { Header } from "./Header";
 
 export const Layout = () => {
   return (
-    <div className="flex flex-col h-full">
-      <Header />
-      <main className="mt-30 ">
-        <Outlet />
-      </main>
-      <Footer />
+    <div className="flex  h-full">
+      <div className="flex-col grow">
+        <Header />
+        <main className="pt-30 h-full">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
