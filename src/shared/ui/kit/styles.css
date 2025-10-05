@@ -1,0 +1,26 @@
+.border-gradient {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -0.5px;
+    padding: 0.5px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  &.rounded-2xl {
+    &::before {
+      border-radius: calc(var(--radius-2xl) + 1px);
+    }
+  }
+
+  &.rounded-full {
+    &::before {
+      border-radius: 100%;
+    }
+  }
+}
