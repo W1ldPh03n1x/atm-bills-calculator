@@ -1,1 +1,1 @@
-export type { ChildrenProp } from "./props";
+export type { ChildrenProp, ClassNameProp } from "./props";

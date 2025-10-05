@@ -1,6 +1,7 @@
 import { CalculatorIcon, Settings2Icon } from "lucide-react";
 import { Link } from "react-router";
 
+import { ROUTES } from "@/shared/constants";
 import { Button, Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/ui";
 
 export const HomePage = () => {
@@ -22,7 +23,7 @@ export const HomePage = () => {
           </CardHeader>
 
           <CardFooter className="flex justify-start">
-            <Link to="/calculate">
+            <Link to={ROUTES.billsCalculator}>
               <Button>Перейти</Button>
             </Link>
           </CardFooter>
@@ -40,7 +41,7 @@ export const HomePage = () => {
           </CardHeader>
 
           <CardFooter className="flex justify-start mt-auto">
-            <Link to="/settings">
+            <Link to={ROUTES.cassetteSettings}>
               <Button>Перейти</Button>
             </Link>
           </CardFooter>

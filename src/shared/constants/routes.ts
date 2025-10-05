@@ -1,3 +1,5 @@
 export const ROUTES = {
-  root: "",
+  root: "/",
+  cassetteSettings: "/cassette-settings",
+  billsCalculator: "/calculator",
 };
