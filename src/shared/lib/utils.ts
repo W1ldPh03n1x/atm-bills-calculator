@@ -45,3 +45,31 @@ export function formatAmount(
 
   return formattedInteger;
 }
+
+export function parseFormattedAmount(
+  formattedValue: string,
+  options: {
+    separator?: string;
+    decimalSeparator?: string;
+  } = {}
+): number {
+  const { separator = " ", decimalSeparator = "," } = options;
+
+  if (!formattedValue || formattedValue.trim() === "") {
+    return 0;
+  }
+
+  let cleanedValue = formattedValue.replace(new RegExp(`\\${separator}`, "g"), "");
+
+  cleanedValue = cleanedValue.replace(decimalSeparator, ".");
+
+  cleanedValue = cleanedValue.replace(/[^\d.-]/g, "");
+
+  if (cleanedValue === "" || cleanedValue === "-") {
+    return 0;
+  }
+
+  const parsed = parseFloat(cleanedValue);
+
+  return isNaN(parsed) ? 0 : parsed;
+}

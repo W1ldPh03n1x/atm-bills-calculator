@@ -1,4 +1,4 @@
-import { BillDenominationList, BillsCount, selectAll, useCassettes } from "@/entities/cassettes";
+import { BillDenominationList, BillsCount, useCassettesStore } from "@/entities/cassettes";
 import { selectTotalSum } from "@/entities/cassettes/model";
 import { AddCassetteButton, DeleteCassetteButton, SwitchCassetteDefective } from "@/features/cassettes";
 import { Card, CardAction, CardFooter, CardHeader, CardTitle, ScrollArea } from "@/shared/ui";
@@ -7,9 +7,8 @@ import { CassetteEditList } from "@/widgets/cassette-edit-list/ui/CassetteEditLi
 import { PopoverMenu } from "@/widgets/menu";
 
 export const CassettesSettingsPage = () => {
-  const { getTotalBills } = useCassettes();
-  const cassettes = useCassettes(selectAll());
-  const totalMoney = useCassettes(selectTotalSum());
+  const { getTotalBillsByDenomination, cassettes } = useCassettesStore();
+  const totalMoney = useCassettesStore(selectTotalSum());
 
   return (
     <div className="min-h-full flex flex-col justify-center pb-30 gap-8 items-center">
@@ -22,7 +21,7 @@ export const CassettesSettingsPage = () => {
           <Card key={denomination} className="w-80">
             <CardHeader>
               <CardTitle>
-                <BillsCount denomination={denomination} count={getTotalBills()} />
+                <BillsCount denomination={denomination} count={getTotalBillsByDenomination(denomination)} />
               </CardTitle>
 
               <CardAction>

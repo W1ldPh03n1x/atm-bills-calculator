@@ -1,4 +1,4 @@
-import { useCassettes } from "@/entities/cassettes";
+import { useCassettesStore } from "@/entities/cassettes";
 import { cn } from "@/shared/lib";
 import { Label, Switch } from "@/shared/ui";
 
@@ -11,7 +11,7 @@ interface SwitchCassetteDefectiveProps extends ClassNameProp {
 }
 
 export const SwitchCassetteDefective: React.FC<SwitchCassetteDefectiveProps> = ({ cassette, label, className }) => {
-  const { toggleDefective } = useCassettes();
+  const { toggleDefective } = useCassettesStore();
   return (
     <Label className={cn(className)}>
       <Switch

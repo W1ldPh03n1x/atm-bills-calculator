@@ -10,14 +10,14 @@ interface CassettesState {
 
 interface CassetteActions {
   addCassette: (denomination: BillDenomination, cassette: Cassette) => void;
-  setBillsCount: (denomination: BillDenomination, id: string, count: number) => void;
+  setBillsCount: (denomination: BillDenomination, id: string, count: number | null) => void;
   toggleDefective: (denomination: BillDenomination, id: string) => void;
   deleteCassette: (denomination: BillDenomination, id: string) => void;
   getTotalBillsByDenomination: (denomination: BillDenomination) => number;
-  getTotalBills: () => number;
+  getAllCassettes: () => Cassette[];
 }
 
-interface CassetteStore extends CassettesState, CassetteActions {}
+interface CassettesStore extends CassettesState, CassetteActions {}
 
 const initialState: CassettesState = {
   cassettes: BillDenominationList.reduce(
@@ -29,7 +29,7 @@ const initialState: CassettesState = {
   ),
 };
 
-const useCassettes = create<CassetteStore>()((set, get) => ({
+const useCassettesStore = create<CassettesStore>()((set, get) => ({
   ...initialState,
   // Actions
   addCassette(denomination, cassette) {
@@ -43,7 +43,7 @@ const useCassettes = create<CassetteStore>()((set, get) => ({
       cassettes: {
         ...cassettes,
         [denomination]: cassettes[denomination].map((cassette) =>
-          cassette.id == id ? { ...cassette, billsCount: Math.max(count, 0) } : cassette
+          cassette.id == id ? { ...cassette, billsCount: count !== null ? Math.max(0, count) : null } : cassette
         ),
       },
     }));
@@ -75,19 +75,13 @@ const useCassettes = create<CassetteStore>()((set, get) => ({
       0
     );
   },
-  getTotalBills() {
-    const { cassettes } = get();
-
-    let totalCount = 0;
-    for (let denomination of BillDenominationList) {
-      totalCount += cassettes[denomination].reduce((s, { billsCount }) => s + billsCount, 0);
-    }
-
-    return 0;
+  getAllCassettes() {
+    return Object.entries(get().cassettes).reduce((acc, entry) => acc.concat(entry[1]), [] as Cassette[]);
   },
 }));
 
-const selectAll = () => (state: CassettesState) => state.cassettes;
+const selectAllCassettes = (state: CassettesStore) =>
+  Object.entries(state.cassettes).reduce((acc, entry) => acc.concat(entry[1]), [] as Cassette[]);
 
 const selectByDenomination = (denomination: BillDenomination) => (state: CassettesState) =>
   state.cassettes[denomination];
@@ -110,5 +104,21 @@ const selectTotalSum =
     return totalCount;
   };
 
-export { useCassettes, selectAll, selectByDenomination, selectCassette, selectTotalSum };
-export type { CassetteStore };
+const selectBillsCount =
+  (denomination: BillDenomination) =>
+  ({ cassettes }: CassettesState) => {
+    return cassettes[denomination].reduce(
+      (acc, { billsCount, isDefective }) => (isDefective ? acc : acc + billsCount),
+      0
+    );
+  };
+
+export {
+  useCassettesStore,
+  selectAllCassettes,
+  selectByDenomination,
+  selectCassette,
+  selectTotalSum,
+  selectBillsCount,
+};
+export type { CassettesStore };

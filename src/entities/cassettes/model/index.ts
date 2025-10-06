@@ -1,3 +1,10 @@
 export type { BillDenomination, Cassette } from "./types";
-export { useCassettes, selectAll, selectByDenomination, selectCassette, selectTotalSum } from "./store";
-export type { CassetteStore } from "./store";
+export {
+  useCassettesStore,
+  selectAllCassettes,
+  selectByDenomination,
+  selectCassette,
+  selectTotalSum,
+  selectBillsCount,
+} from "./store";
+export type { CassettesStore } from "./store";

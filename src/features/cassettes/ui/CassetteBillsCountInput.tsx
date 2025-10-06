@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useCassettes } from "@/entities/cassettes";
+import { useCassettesStore } from "@/entities/cassettes";
 import { selectCassette } from "@/entities/cassettes/model/store";
 import { Input } from "@/shared/ui";
 
@@ -13,13 +13,12 @@ interface CassetteBillsCountInputProps
 }
 
 export const CassetteBillsCountInput: React.FC<CassetteBillsCountInputProps> = ({ id, denomination, ...props }) => {
-  const { setBillsCount } = useCassettes();
-  const cassette = useCassettes(selectCassette(denomination, id));
+  const { setBillsCount } = useCassettesStore();
+  const cassette = useCassettesStore(selectCassette(denomination, id));
 
   const handleInput = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e);
-      setBillsCount(denomination, id, Number(e.target.value));
+    ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+      setBillsCount(denomination, id, target.value !== "" ? Number(target.value) : null);
     },
     [setBillsCount, cassette?.billsCount]
   );
@@ -27,7 +26,7 @@ export const CassetteBillsCountInput: React.FC<CassetteBillsCountInputProps> = (
   return (
     <Input
       name={`cassettes[${id}].count`}
-      value={cassette?.billsCount}
+      value={cassette?.billsCount !== null ? cassette?.billsCount : ""}
       onChange={handleInput}
       type="number"
       placeholder="Введите количество"

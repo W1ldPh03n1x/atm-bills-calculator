@@ -1,1 +1,1 @@
-export { BillsCount } from "./TotalDenominationBills";
+export { BillsCount } from "./BillsCount";

@@ -1,4 +1,11 @@
 export { BillDenominationList } from "./lib";
-export { selectAll, selectByDenomination, useCassettes } from "./model";
-export type { BillDenomination, Cassette, CassetteStore, CassetteStatus } from "./model";
+export {
+  useCassettesStore,
+  selectAllCassettes,
+  selectByDenomination,
+  selectBillsCount,
+  selectCassette,
+  selectTotalSum,
+} from "./model";
+export type { BillDenomination, Cassette, CassettesStore } from "./model";
 export { BillsCount } from "./ui";

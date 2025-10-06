@@ -1,4 +1,4 @@
-import { useCassettes } from "@/entities/cassettes";
+import { useCassettesStore } from "@/entities/cassettes";
 import { Button } from "@/shared/ui";
 
 import type { BillDenomination } from "@/entities/cassettes";
@@ -16,7 +16,7 @@ export const DeleteCassetteButton: React.FC<DeleteCassetteButtonProps> = ({
   size = "sm",
   ...props
 }) => {
-  const { deleteCassette } = useCassettes();
+  const { deleteCassette } = useCassettesStore();
 
   return (
     <Button variant={variant} size={size} onClick={() => deleteCassette(denomination, id)} {...props}>

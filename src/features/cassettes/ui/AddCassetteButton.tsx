@@ -1,6 +1,6 @@
 import { PlusIcon } from "lucide-react";
 
-import { useCassettes } from "@/entities/cassettes";
+import { useCassettesStore } from "@/entities/cassettes";
 import { Button } from "@/shared/ui";
 
 import type { BillDenomination } from "@/entities/cassettes";
@@ -9,7 +9,7 @@ interface AddCassetteButtonProps {
 }
 
 export const AddCassetteButton: React.FC<AddCassetteButtonProps> = ({ denomination }) => {
-  const { addCassette } = useCassettes();
+  const { addCassette } = useCassettesStore();
 
   return (
     <Button

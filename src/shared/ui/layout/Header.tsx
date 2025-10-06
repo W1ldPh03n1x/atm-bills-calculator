@@ -23,7 +23,7 @@ export const Header = () => {
         </Link>
       </div>
       <div className="flex items-center gap-4 ">
-        <div className="flex flex-wrap justify-end basis-40 gap-2 text-4xl font-[100] scale-y-75 tracking-tighter max-sm:text-2xl">
+        <div className="flex flex-wrap justify-end basis-40 gap-2 text-4xl font-[100] scale-y-75  tracking-tighter max-sm:text-2xl">
           <div className="font-extrabold">TM</div> <div>BANK</div>
         </div>
 
