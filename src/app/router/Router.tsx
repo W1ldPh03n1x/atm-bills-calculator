@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 
 import { CassettesSettingsPage, HomePage, NotFoundPage } from "@/pages";
+import { BillsSpinnerPreviewPage } from "@/pages/bills-spinner-preview";
 import { CalculatorPage } from "@/pages/calculator";
 import { ROUTES } from "@/shared/constants";
 import { Layout } from "@/shared/ui";
@@ -12,6 +13,7 @@ export const AppRouter = () => {
         <Route index element={<HomePage></HomePage>}></Route>
         <Route path={ROUTES.cassetteSettings} element={<CassettesSettingsPage></CassettesSettingsPage>}></Route>
         <Route path={ROUTES.billsCalculator} element={<CalculatorPage></CalculatorPage>}></Route>
+        <Route path={ROUTES.billsSpinner} element={<BillsSpinnerPreviewPage />}></Route>
 
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>

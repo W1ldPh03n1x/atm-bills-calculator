@@ -8,7 +8,7 @@ export const HomePage = () => {
   return (
     <div className="min-h-full flex flex-col justify-center pb-30">
       <div className="container mx-auto flex gap-12 justify-center items-stretch flex-wrap">
-        <Card className="w-120 ">
+        <Card className="w-120 max-sm:w-90">
           <CardHeader>
             <CardTitle>Рассчитать вывод купюр</CardTitle>
 
@@ -29,7 +29,7 @@ export const HomePage = () => {
           </CardFooter>
         </Card>
 
-        <Card className="w-120">
+        <Card className="w-120 max-sm:w-90">
           <CardHeader>
             <CardTitle>Настроить количество кассет</CardTitle>
 
