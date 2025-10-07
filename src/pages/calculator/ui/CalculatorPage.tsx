@@ -27,7 +27,13 @@ export const CalculatorPage = () => {
             setOptimalDecomposition(
               targetSum === null
                 ? calculateOptimalBillsDecomposition(0, [])
-                : calculateOptimalBillsDecomposition(targetSum, getAllCassettes())
+                : (() => {
+                    console.time("Optimal decomposition");
+                    const decomposition = calculateOptimalBillsDecomposition(targetSum, getAllCassettes());
+                    console.timeEnd("Optimal decomposition");
+
+                    return decomposition;
+                  })()
             );
           }}
         />
