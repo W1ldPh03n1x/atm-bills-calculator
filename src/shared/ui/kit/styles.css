@@ -4,7 +4,7 @@
   &::before {
     content: "";
     position: absolute;
-    inset: -0.4px;
+    inset: 0px;
     padding: 0.4px;
     background-image: linear-gradient(115.28deg, rgba(255, 255, 255, 0.4) -1.47%, rgba(255, 255, 255, 0) 67.22%),
       linear-gradient(305.6deg, rgba(11, 11, 13, 0.8) -0.43%, rgba(11, 11, 13, 0) 80.55%);
@@ -13,21 +13,8 @@
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
-  }
+    opacity: inherit;
 
-  &.rounded-2xl {
-    &::before {
-      border-radius: calc(var(--radius-2xl) + 1px);
-    }
-  }
-  &.rounded-lg {
-    &::before {
-      border-radius: calc(var(--radius-lg) + 1px);
-    }
-  }
-  &.rounded-full {
-    &::before {
-      border-radius: 100%;
-    }
+    border-radius: inherit;
   }
 }

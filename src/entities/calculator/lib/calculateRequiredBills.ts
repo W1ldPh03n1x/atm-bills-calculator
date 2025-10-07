@@ -2,14 +2,11 @@ import { BillDenominationList } from "@/entities/cassettes";
 
 import type { BillDenomination, Cassette } from "@/entities/cassettes";
 
-export function calculateRequiredBillsDecomposition(
+export function calculateOptimalBillsDecomposition(
   targetSum: number,
   cassettes: Cassette[]
 ): Map<BillDenomination, number> | null {
-  console.time();
-
   if (targetSum === 0) {
-    console.timeEnd();
     return BillDenominationList.reduce(
       (map, denomination) => map.set(denomination, 0),
       new Map<BillDenomination, number>()
@@ -41,9 +38,7 @@ export function calculateRequiredBillsDecomposition(
 
     decomposition.set(denomination, requiredBills);
   }
-  console.log(targetSum, remnant, decomposition);
 
-  console.timeEnd();
   if (remnant) return null;
 
   return decomposition;

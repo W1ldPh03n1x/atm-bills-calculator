@@ -1,4 +1,5 @@
 export { Button, buttonVariants } from "./kit/button";
+export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants } from "./kit/button-group";
 export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent } from "./kit/card";
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./kit/collapsible";
 export {

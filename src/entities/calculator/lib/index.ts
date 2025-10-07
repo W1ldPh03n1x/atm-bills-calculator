@@ -1,1 +1,1 @@
-export { calculateRequiredBillsDecomposition } from "./calculateRequiredBills";
+export { calculateOptimalBillsDecomposition } from "./calculateRequiredBills";

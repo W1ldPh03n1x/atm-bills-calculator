@@ -1,3 +1,3 @@
-export { calculateRequiredBillsDecomposition } from "./lib";
+export { calculateOptimalBillsDecomposition } from "./lib";
 export { useBillsCalculatorStore } from "./model";
 export {} from "./ui";
