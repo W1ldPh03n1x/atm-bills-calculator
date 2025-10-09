@@ -129,10 +129,6 @@ body,
   @apply h-full;
 }
 
-html {
-  @apply dark;
-}
-
 body {
   position: relative;
 }
