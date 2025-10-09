@@ -42,7 +42,7 @@ const useBillsCalculatorStore = create<CalculatorStore>()((set, get) => ({
         state.customDecomposition || new Map(state.optimalDecomposition || calculateOptimalBillsDecomposition(0, []));
       customDecomposition.set(denomination, (customDecomposition.get(denomination) || 0) + 1);
 
-      const newTargetSum = state.targetSum !== null ? state.targetSum + 1 * denomination : null;
+      const newTargetSum = state.targetSum !== null ? state.targetSum + 1 * denomination : denomination;
 
       return { customDecomposition, targetSum: newTargetSum };
     });
@@ -53,7 +53,7 @@ const useBillsCalculatorStore = create<CalculatorStore>()((set, get) => ({
         state.customDecomposition || new Map(state.optimalDecomposition || calculateOptimalBillsDecomposition(0, []));
       customDecomposition.set(denomination, (customDecomposition.get(denomination) || 0) - 1);
 
-      const newTargetSum = state.targetSum !== null ? Math.max(state.targetSum - 1 * denomination, 0) : null;
+      const newTargetSum = state.targetSum !== null ? Math.max(state.targetSum - 1 * denomination, 0) : 0;
 
       return { customDecomposition, targetSum: newTargetSum };
     });

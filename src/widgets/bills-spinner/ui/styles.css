@@ -128,9 +128,15 @@
 @keyframes oscillate-radius {
   0%,
   100% {
-    transform: rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-200%);
+    transform: rotateZ(0) rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-200%);
+  }
+  25% {
+    transform: rotateZ(5deg) rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-240%);
   }
   50% {
-    transform: rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-275%);
+    transform: rotateZ(0) rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-275%);
+  }
+  75% {
+    transform: rotateZ(-5deg) rotateX(calc(var(--index) / var(--total) * 360deg)) translateY(-220%);
   }
 }
